@@ -9,7 +9,6 @@ const FeaturePost = () => {
     useEffect(() => {
         const getFeaturedPosts = async ()=>{
             const result = await getFeaturedPostsService()
-            console.log(result)
             setFeaturedPosts(result)
         }
         getFeaturedPosts()
