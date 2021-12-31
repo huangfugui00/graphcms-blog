@@ -230,7 +230,7 @@ export const getComments = async (slug) => {
 
 export const getRecentPosts = async () => {
   const query = gql`
-    query GetPostDetails() {
+    query GetRecentPosts {
       posts(
         orderBy: createdAt_ASC
         last: 3
@@ -245,6 +245,6 @@ export const getRecentPosts = async () => {
     }
   `;
   const result = await request(graphqlAPI, query);
-
+ console.log(result)
   return result.posts;
 };

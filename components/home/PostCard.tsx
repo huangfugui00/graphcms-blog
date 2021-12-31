@@ -10,13 +10,11 @@ type postCardProps = {
 }
 
 const PostCard = ({post}:postCardProps) => {
-    console.log(post)
-    console.log('postcard')
     if(!post){
         return<></>
     }
     return (
-        <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 my-8">
+        <div className="bg-white shadow-lg rounded-lg p-0 p-4 lg:p-8  ">
             {/* image */}
             <div className="relative h-80 w-full ">
                 <Image className="rounded-lg" alt={post.title} src={post.featuredImage.url} layout="fill" objectFit="cover"/>
@@ -41,7 +39,7 @@ const PostCard = ({post}:postCardProps) => {
                     </div>
                 </div>
                 {/* excerpt */}
-                <p className="font-serif text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8">
+                <p className="line-clamp-3 font-serif text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8">
                     {post.excerpt}
                 </p>
 
