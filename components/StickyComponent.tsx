@@ -31,7 +31,7 @@ const StickyComponent = ({childLeft,ChildRight,colLeft=8,colRight=4}:StickyCompo
         }, []);
 
     return (
-        <div className="grid lg:grid-cols-12 mt-12 gap-8">
+        <div className=" lg:grid lg:grid-cols-12 mt-12 gap-8">
             <div className={`lg:col-span-${colLeft}`} ref={ref} >
                {childLeft}
             </div>

@@ -23,24 +23,24 @@ export async function getStaticProps(){
 }
 
 export default function Home({posts,recentPosts}:InferGetStaticPropsType<typeof getStaticProps>) {
-  // const ref = useRef<HTMLDivElement>(null) 
-  // const scrollHandler = () => {
-  //   if(ref&&ref.current){
-  //       if(ref.current.getBoundingClientRect().top<0){
-  //           ref.current.classList.add('order-last')
-  //       }
-  //       else{
-  //           ref.current.classList.remove('order-last')
-  //       }
-  //   }
+  const ref = useRef<HTMLDivElement>(null) 
+  const scrollHandler = () => {
+    if(ref&&ref.current){
+        if(ref.current.getBoundingClientRect().top<0){
+            ref.current.classList.add('order-last')
+        }
+        else{
+            ref.current.classList.remove('order-last')
+        }
+    }
   
-  // };
-  // useLayoutEffect(() => {
-  //     window.addEventListener("scroll", scrollHandler, true);
-  //     return () => {
-  //       window.removeEventListener("scroll", scrollHandler, true);
-  //     };
-  //   }, []);
+  };
+  useLayoutEffect(() => {
+      window.addEventListener("scroll", scrollHandler, true);
+      return () => {
+        window.removeEventListener("scroll", scrollHandler, true);
+      };
+    }, []);
 
   return (
     <div>
@@ -56,8 +56,11 @@ export default function Home({posts,recentPosts}:InferGetStaticPropsType<typeof 
           
         </div>
 
-        <StickyComponent 
-         childLeft= {
+       
+        <div className="lg:grid lg:grid-cols-12 mt-12 gap-8">
+          {/*List  PostCard*/}
+          <div className="lg:col-span-8" ref={ref} >
+            {
              posts&& posts.map((post,index)=>(              
               <div key={post.title} className="mb-8">
                 <PostCard post={post}/>
@@ -65,20 +68,24 @@ export default function Home({posts,recentPosts}:InferGetStaticPropsType<typeof 
              )      
             )
             }
-          ChildRight={<div>
-             <PostWidget posts={recentPosts} title='Recent Post' />
-             <Categories/>
-          </div>}
-          colLeft={8}
-          colRight={4}
+          </div>
+          {/* lg:col-start-9 是重点 */}
+          <div className=" lg:col-span-4 lg:col-start-9 lg:sticky lg:top-12">
+            {/* PostWidget */}
 
-          />
-         
+              <PostWidget posts={recentPosts} title='Recent Post' />
 
+            {/* categories */}
+            <div>
+              <Categories/>
+            </div>
+          </div>
+        </div>
       </main>
 
      
     </div>
   )
 }
+
 
