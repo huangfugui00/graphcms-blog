@@ -141,30 +141,25 @@ export const getAdjacentPosts = async (createdAt, slug) => {
 export const getCategoryPost = async (slug) => {
   const query = gql`
     query GetCategoryPost($slug: String!) {
-      postsConnection(where: {categorys_some: {slug: $slug}}) {
-        edges {
-          cursor
-          node {
-            author {
-              bio
-              name
-              id
-              photo {
-                url
-              }
-            }
-            createdAt
-            slug
-            title
-            excerpt
-            featuredImage {
-              url
-            }
-            categorys {
-              name
-              slug
-            }
+      posts(where: {categorys_some: {slug: $slug}}) {
+        author {
+          bio
+          name
+          id
+          photo {
+            url
           }
+        }
+        createdAt
+        slug
+        title
+        excerpt
+        featuredImage {
+          url
+        }
+        categorys {
+          name
+          slug
         }
       }
     }
@@ -172,7 +167,7 @@ export const getCategoryPost = async (slug) => {
 
   const result = await request(graphqlAPI, query, { slug });
 
-  return result.postsConnection.edges;
+  return result.posts;
 };
 
 export const getFeaturedPostsService = async () => {

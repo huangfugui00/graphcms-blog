@@ -1,10 +1,9 @@
 import React from 'react'
-import {postType} from '../../utils/type'
+import {postType} from '../utils/type'
 import Image from 'next/image'
 import Link from 'next/link'
 import moment from 'moment';
 
-import MyButton from '../MyButton'
 type postCardProps = {
     post:postType
 }
