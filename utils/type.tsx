@@ -16,11 +16,19 @@ export type postType = {
     title:string,
     createdAt:string,
     slug:string,
-    content:string, 
+    content:any, 
     excerpt:string,
     author:authorType,
     featuredImage:{
         url:string,
     },
     featuredPost:boolean,
+    categorys:categoryType[],
+}
+
+export type commentType={
+    comment:string,
+    name:string,
+    email:string,
+    createdAt:string,
 }

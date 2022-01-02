@@ -41,28 +41,26 @@ const CategoryPost = ({posts}:InferGetStaticPropsType<typeof getStaticProps>) =>
                 <title>Graphcms blog category</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-      {/* Header  */}
-      <main className="my-8">
-        <div className="lg:grid lg:grid-cols-12 mt-12 gap-8">
-          {/*List  PostCard*/}
-          <div className="lg:col-span-8" ref={ref} >
-            {
-             categoryPosts&& categoryPosts.map((post)=>(              
-              <div key={post.title} className="mb-8">
-                <PostCard post={post}/>
-              </div>
-             )      
-            )
-            }
-          </div>
-          {/* lg:col-start-9 是重点 */}
-          <div className=" lg:col-span-4 lg:col-start-9 lg:sticky top-12">
-            <div>
-              <Categories/>
-            </div>
-          </div>
-        </div>
-      </main>
+            <main className="my-8">
+                <div className="lg:grid lg:grid-cols-12 mt-12 gap-8">
+                {/*List  PostCard*/}
+                <div className="lg:col-span-8" ref={ref} >
+                    {
+                    categoryPosts&& categoryPosts.map((post)=>(              
+                    <div key={post.title} className="mb-8">
+                        <PostCard post={post}/>
+                    </div>
+                    )      
+                    )}
+                </div>
+                {/* lg:col-start-9 是重点 */}
+                <div className=" lg:col-span-4 lg:col-start-9 lg:sticky top-12">
+                    <div>
+                    <Categories/>
+                    </div>
+                </div>
+                </div>
+            </main>
             
         </div>
     )

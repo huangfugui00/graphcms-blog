@@ -76,7 +76,7 @@ export default function Home({posts,recentPosts}:InferGetStaticPropsType<typeof 
               <PostWidget posts={recentPosts} title='Recent Post' />
 
             {/* categories */}
-            <div>
+            <div className="mt-8"> 
               <Categories/>
             </div>
           </div>
